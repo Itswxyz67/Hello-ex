@@ -1,7 +1,4 @@
--- Modern UI Server Info Script for KRNL (Improved Version)
--- This script displays server, player, and user information in a clean, modern UI
-
--- Services
+-- Services (unchanged)
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local TweenService = game:GetService("TweenService")
@@ -9,25 +6,24 @@ local CoreGui = game:GetService("CoreGui")
 local HttpService = game:GetService("HttpService")
 local UserInputService = game:GetService("UserInputService")
 local SocialService = game:GetService("SocialService") -- Added SocialService
-
--- Variables
+-- Variables (unchanged)
 local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local Camera = workspace.CurrentCamera
 
--- Destroy previous GUI if it exists
+-- Destroy previous GUI if it exists (unchanged)
 if CoreGui:FindFirstChild("ServerInfoGUI") then
     CoreGui:FindFirstChild("ServerInfoGUI"):Destroy()
 end
 
--- Create the main GUI
+-- Create the main GUI (unchanged)
 local ServerInfoGUI = Instance.new("ScreenGui")
 ServerInfoGUI.Name = "ServerInfoGUI"
 ServerInfoGUI.Parent = CoreGui
 ServerInfoGUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ServerInfoGUI.ResetOnSpawn = false
 
--- Create the main frame
+-- Create the main frame (unchanged)
 local MainFrame = Instance.new("Frame")
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ServerInfoGUI
@@ -38,7 +34,7 @@ MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 MainFrame.Size = UDim2.new(0, 600, 0, 375)
 MainFrame.ClipsDescendants = true
 
--- Create minimized circle frame (hidden initially)
+-- Create minimized circle frame (hidden initially) (unchanged)
 local MinimizedCircle = Instance.new("Frame")
 MinimizedCircle.Name = "MinimizedCircle"
 MinimizedCircle.Parent = ServerInfoGUI
@@ -63,12 +59,12 @@ CircleIcon.Text = "SI"
 CircleIcon.TextColor3 = Color3.fromRGB(0, 170, 255)
 CircleIcon.TextSize = 18
 
--- Add rounded corners to main frame
+-- Add rounded corners to main frame (unchanged)
 local UICorner = Instance.new("UICorner")
 UICorner.CornerRadius = UDim.new(0, 6)
 UICorner.Parent = MainFrame
 
--- Add shadow to main frame
+-- Add shadow to main frame (unchanged)
 local Shadow = Instance.new("ImageLabel")
 Shadow.Name = "Shadow"
 Shadow.Parent = MainFrame
@@ -81,7 +77,7 @@ Shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 Shadow.ScaleType = Enum.ScaleType.Slice
 Shadow.SliceCenter = Rect.new(23, 23, 277, 277)
 
--- Create Top Bar
+-- Create Top Bar (unchanged)
 local TopBar = Instance.new("Frame")
 TopBar.Name = "TopBar"
 TopBar.Parent = MainFrame
@@ -93,7 +89,7 @@ local UICorner_TopBar = Instance.new("UICorner")
 UICorner_TopBar.CornerRadius = UDim.new(0, 6)
 UICorner_TopBar.Parent = TopBar
 
--- Create Title
+-- Create Title (unchanged)
 local Title = Instance.new("TextLabel")
 Title.Name = "Title"
 Title.Parent = TopBar
@@ -106,7 +102,7 @@ Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 14
 Title.TextXAlignment = Enum.TextXAlignment.Left
 
--- Create Close Button
+-- Create Close Button (unchanged)
 local CloseButton = Instance.new("TextButton")
 CloseButton.Name = "CloseButton"
 CloseButton.Parent = TopBar
@@ -118,7 +114,7 @@ CloseButton.Text = "X"
 CloseButton.TextColor3 = Color3.fromRGB(255, 100, 100)
 CloseButton.TextSize = 14
 
--- Create Minimize Button
+-- Create Minimize Button (unchanged)
 local MinimizeButton = Instance.new("TextButton")
 MinimizeButton.Name = "MinimizeButton"
 MinimizeButton.Parent = TopBar
@@ -130,7 +126,7 @@ MinimizeButton.Text = "_"
 MinimizeButton.TextColor3 = Color3.fromRGB(200, 200, 200)
 MinimizeButton.TextSize = 14
 
--- Create Side Navigation
+-- Create Side Navigation (unchanged)
 local SideNav = Instance.new("Frame")
 SideNav.Name = "SideNav"
 SideNav.Parent = MainFrame
@@ -143,7 +139,7 @@ local UICorner_SideNav = Instance.new("UICorner")
 UICorner_SideNav.CornerRadius = UDim.new(0, 6)
 UICorner_SideNav.Parent = SideNav
 
--- Fix corner overlap
+-- Fix corner overlap (unchanged)
 local FixCorner = Instance.new("Frame")
 FixCorner.Name = "FixCorner"
 FixCorner.Parent = SideNav
@@ -165,7 +161,7 @@ local function CreateTab(name, position, selected)
     Tab.Text = name
     Tab.TextColor3 = selected and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(200, 200, 200)
     Tab.TextSize = 14
-    
+
     local Indicator = Instance.new("Frame")
     Indicator.Name = "Indicator"
     Indicator.Parent = Tab
@@ -173,7 +169,7 @@ local function CreateTab(name, position, selected)
     Indicator.BorderSizePixel = 0
     Indicator.Size = UDim2.new(0, 2, 1, 0)
     Indicator.Visible = selected
-    
+
     return Tab
 end
 
@@ -181,7 +177,7 @@ local ServerTab = CreateTab("Server", 10, true)
 local PlayersTab = CreateTab("Players", 50, false)
 local LocalTab = CreateTab("Local User", 90, false)
 
--- Create content frames
+-- Create content frames (unchanged)
 local ContentFrame = Instance.new("Frame")
 ContentFrame.Name = "ContentFrame"
 ContentFrame.Parent = MainFrame
@@ -189,7 +185,7 @@ ContentFrame.BackgroundTransparency = 1
 ContentFrame.Position = UDim2.new(0, 130, 0, 40)
 ContentFrame.Size = UDim2.new(1, -140, 1, -50)
 
--- Server Info Content
+-- Server Info Content (unchanged)
 local ServerInfo = Instance.new("ScrollingFrame")
 ServerInfo.Name = "ServerInfo"
 ServerInfo.Parent = ContentFrame
@@ -207,7 +203,7 @@ UIListLayout_Server.Parent = ServerInfo
 UIListLayout_Server.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout_Server.Padding = UDim.new(0, 10)
 
--- Players Info Content
+-- Players Info Content (unchanged)
 local PlayersInfo = Instance.new("ScrollingFrame")
 PlayersInfo.Name = "PlayersInfo"
 PlayersInfo.Parent = ContentFrame
@@ -226,7 +222,7 @@ UIListLayout_Players.Parent = PlayersInfo
 UIListLayout_Players.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout_Players.Padding = UDim.new(0, 10)
 
--- Search bar for Players tab
+-- Search bar for Players tab (unchanged)
 local SearchBarFrame = Instance.new("Frame")
 SearchBarFrame.Name = "SearchBarFrame"
 SearchBarFrame.Parent = ContentFrame
@@ -265,7 +261,7 @@ SearchBar.TextSize = 14
 SearchBar.TextXAlignment = Enum.TextXAlignment.Left
 SearchBar.ClearTextOnFocus = false
 
--- Local User Info Content
+-- Local User Info Content (unchanged)
 local LocalUserInfo = Instance.new("ScrollingFrame")
 LocalUserInfo.Name = "LocalUserInfo"
 LocalUserInfo.Parent = ContentFrame
@@ -283,7 +279,7 @@ UIListLayout_Local.Parent = LocalUserInfo
 UIListLayout_Local.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout_Local.Padding = UDim.new(0, 10)
 
--- Helper Functions
+-- Helper Functions (unchanged)
 local function CreateInfoCard(parent, title, content, order)
     local InfoCard = Instance.new("Frame")
     InfoCard.Name = title .. "Card"
@@ -292,11 +288,11 @@ local function CreateInfoCard(parent, title, content, order)
     InfoCard.BorderSizePixel = 0
     InfoCard.Size = UDim2.new(1, -20, 0, 50)
     InfoCard.LayoutOrder = order
-    
+
     local UICorner_Card = Instance.new("UICorner")
     UICorner_Card.CornerRadius = UDim.new(0, 4)
     UICorner_Card.Parent = InfoCard
-    
+
     local Title = Instance.new("TextLabel")
     Title.Name = "Title"
     Title.Parent = InfoCard
@@ -308,7 +304,7 @@ local function CreateInfoCard(parent, title, content, order)
     Title.TextColor3 = Color3.fromRGB(200, 200, 200)
     Title.TextSize = 14
     Title.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     local Content = Instance.new("TextLabel")
     Content.Name = "Content"
     Content.Parent = InfoCard
@@ -320,14 +316,14 @@ local function CreateInfoCard(parent, title, content, order)
     Content.TextColor3 = Color3.fromRGB(255, 255, 255)
     Content.TextSize = 14
     Content.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     return Content
 end
 
--- Create notification function
+-- Create notification function (unchanged)
 local function CreateNotification(text, duration)
     duration = duration or 3
-    
+
     local notification = Instance.new("Frame")
     notification.Name = "Notification"
     notification.Parent = ServerInfoGUI
@@ -336,11 +332,11 @@ local function CreateNotification(text, duration)
     notification.Position = UDim2.new(0.5, -100, 0.1, 0)
     notification.Size = UDim2.new(0, 200, 0, 50)
     notification.AnchorPoint = Vector2.new(0.5, 0)
-    
+
     local UICorner_Notif = Instance.new("UICorner")
     UICorner_Notif.CornerRadius = UDim.new(0, 6)
     UICorner_Notif.Parent = notification
-    
+
     local NotifText = Instance.new("TextLabel")
     NotifText.Name = "NotifText"
     NotifText.Parent = notification
@@ -352,29 +348,30 @@ local function CreateNotification(text, duration)
     NotifText.TextColor3 = Color3.fromRGB(255, 255, 255)
     NotifText.TextSize = 14
     NotifText.TextWrapped = true
-    
+
     -- Add a nice fade-in and fade-out effect
     notification.BackgroundTransparency = 1
     NotifText.TextTransparency = 1
-    
+
     -- Fade in
     TweenService:Create(notification, TweenInfo.new(0.3), {BackgroundTransparency = 0}):Play()
     TweenService:Create(NotifText, TweenInfo.new(0.3), {TextTransparency = 0}):Play()
-    
+
     -- Fade out after delay
     task.delay(duration, function()
         local fadeOut = TweenService:Create(notification, TweenInfo.new(0.5), {BackgroundTransparency = 1})
         local textFadeOut = TweenService:Create(NotifText, TweenInfo.new(0.5), {TextTransparency = 1})
-        
+
         fadeOut:Play()
         textFadeOut:Play()
-        
+
         fadeOut.Completed:Connect(function()
             notification:Destroy()
         end)
     end)
 end
 
+-- Helper Functions (unchanged)
 local function SwitchToOriginalPlayer()
     -- Switch camera back to local player
     local localHumanoid = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
@@ -383,7 +380,7 @@ local function SwitchToOriginalPlayer()
     end
 end
 
-local CurrentlySpectating = false -- Flag to track spectating state
+local CurrentlySpectating = false
 local function CreatePlayerCard(player, order)
     local PlayerCard = Instance.new("Frame")
     PlayerCard.Name = player.Name .. "Card"
@@ -392,17 +389,17 @@ local function CreatePlayerCard(player, order)
     PlayerCard.BorderSizePixel = 0
     PlayerCard.Size = UDim2.new(1, -20, 0, 165)
     PlayerCard.LayoutOrder = order
-    
+
     -- Tag to store player's name for search filtering
     PlayerCard:SetAttribute("PlayerName", string.lower(player.Name))
     if player.DisplayName then
         PlayerCard:SetAttribute("DisplayName", string.lower(player.DisplayName))
     end
-    
+
     local UICorner_Card = Instance.new("UICorner")
     UICorner_Card.CornerRadius = UDim.new(0, 4)
     UICorner_Card.Parent = PlayerCard
-    
+
     -- Create a gradient background for a modern look
     local UIGradient = Instance.new("UIGradient")
     UIGradient.Color = ColorSequence.new({
@@ -411,7 +408,7 @@ local function CreatePlayerCard(player, order)
     })
     UIGradient.Rotation = 90
     UIGradient.Parent = PlayerCard
-    
+
     local Avatar = Instance.new("ImageLabel")
     Avatar.Name = "Avatar"
     Avatar.Parent = PlayerCard
@@ -419,28 +416,28 @@ local function CreatePlayerCard(player, order)
     Avatar.BorderSizePixel = 0
     Avatar.Position = UDim2.new(0, 10, 0, 10)
     Avatar.Size = UDim2.new(0, 80, 0, 80)
-    
+
     local UICorner_Avatar = Instance.new("UICorner")
     UICorner_Avatar.CornerRadius = UDim.new(0, 4)
     UICorner_Avatar.Parent = Avatar
-    
+
     -- Avatar stroke for better appearance
     local UIStroke = Instance.new("UIStroke")
     UIStroke.Color = Color3.fromRGB(60, 60, 60)
     UIStroke.Thickness = 1
     UIStroke.Parent = Avatar
-    
+
     -- Try to load the player's thumbnail
     local success, result = pcall(function()
         return Players:GetUserThumbnailAsync(player.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
     end)
-    
+
     if success then
         Avatar.Image = result
     else
         Avatar.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
     end
-    
+
     -- Player info
     local PlayerName = Instance.new("TextLabel")
     PlayerName.Name = "PlayerName"
@@ -453,7 +450,7 @@ local function CreatePlayerCard(player, order)
     PlayerName.TextColor3 = Color3.fromRGB(255, 255, 255)
     PlayerName.TextSize = 16
     PlayerName.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     local DisplayName = Instance.new("TextLabel")
     DisplayName.Name = "DisplayName"
     DisplayName.Parent = PlayerCard
@@ -465,7 +462,7 @@ local function CreatePlayerCard(player, order)
     DisplayName.TextColor3 = Color3.fromRGB(200, 200, 200)
     DisplayName.TextSize = 14
     DisplayName.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     local UserId = Instance.new("TextLabel")
     UserId.Name = "UserId"
     UserId.Parent = PlayerCard
@@ -477,7 +474,7 @@ local function CreatePlayerCard(player, order)
     UserId.TextColor3 = Color3.fromRGB(200, 200, 200)
     UserId.TextSize = 14
     UserId.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     local Account = Instance.new("TextLabel")
     Account.Name = "Account"
     Account.Parent = PlayerCard
@@ -489,7 +486,7 @@ local function CreatePlayerCard(player, order)
     Account.TextColor3 = Color3.fromRGB(200, 200, 200)
     Account.TextSize = 14
     Account.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     -- Additional player details
     local TeamLabel = Instance.new("TextLabel")
     TeamLabel.Name = "TeamLabel"
@@ -501,7 +498,7 @@ local function CreatePlayerCard(player, order)
     TeamLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
     TeamLabel.TextSize = 14
     TeamLabel.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     -- Check if player is on a team
     if player.Team then
         TeamLabel.Text = "Team: " .. player.Team.Name
@@ -509,7 +506,7 @@ local function CreatePlayerCard(player, order)
     else
         TeamLabel.Text = "Team: None"
     end
-    
+
     -- Check if player is friend
     local IsFriendLabel = Instance.new("TextLabel")
     IsFriendLabel.Name = "IsFriendLabel"
@@ -520,13 +517,13 @@ local function CreatePlayerCard(player, order)
     IsFriendLabel.Font = Enum.Font.Gotham
     IsFriendLabel.TextSize = 14
     IsFriendLabel.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     -- Check if player is a friend (safely)
     local isFriend = false
     pcall(function()
         isFriend = LocalPlayer:IsFriendsWith(player.UserId)
     end)
-    
+
     if isFriend then
         IsFriendLabel.Text = "Friend: Yes"
         IsFriendLabel.TextColor3 = Color3.fromRGB(85, 255, 127)
@@ -534,7 +531,7 @@ local function CreatePlayerCard(player, order)
         IsFriendLabel.Text = "Friend: No"
         IsFriendLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
     end
-    
+
     -- Premium status (if available)
     local PremiumLabel = Instance.new("TextLabel")
     PremiumLabel.Name = "PremiumLabel"
@@ -545,96 +542,11 @@ local function CreatePlayerCard(player, order)
     PremiumLabel.Font = Enum.Font.Gotham
     PremiumLabel.TextSize = 14
     PremiumLabel.TextXAlignment = Enum.TextXAlignment.Left
-    
+
     -- Check premium status (safely)
     local hasPremium = false
     pcall(function()
-        hasPremium = player.MembershipType == Enum.MembershipType.Premium
-    end)
-    
-    if hasPremium then
-        PremiumLabel.Text = "Premium: Yes"
-        PremiumLabel.TextColor3 = Color3.fromRGB(255, 215, 0)
-    else
-        PremiumLabel.Text = "Premium: No"
-        PremiumLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-    end
-    
-    -- Distance from local player (if both have characters)
-    local DistanceLabel = Instance.new("TextLabel")
-    DistanceLabel.Name = "DistanceLabel"
-    DistanceLabel.Parent = PlayerCard
-    DistanceLabel.BackgroundTransparency = 1
-    DistanceLabel.Position = UDim2.new(0.52, 0, 0, 120)
-    DistanceLabel.Size = UDim2.new(0.48, 0, 0, 20)
-    DistanceLabel.Font = Enum.Font.Gotham
-    DistanceLabel.TextSize = 14
-    DistanceLabel.TextXAlignment = Enum.TextXAlignment.Left
-    
-    local distance = "N/A"
-    if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and 
-       player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-        distance = math.floor((LocalPlayer.Character.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude)
-        DistanceLabel.Text = "Distance: " .. distance .. " studs"
-    else
-        DistanceLabel.Text = "Distance: N/A"
-    end
-    DistanceLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-    
-     -- Spectate button with play icon
-    local SpectateButton = Instance.new("TextButton")
-    SpectateButton.Name = "SpectateButton"
-    SpectateButton.Parent = PlayerCard
-    SpectateButton.BackgroundColor3 = Color3.fromRGB(60, 120, 190)
-    SpectateButton.BorderSizePixel = 0
-    SpectateButton.Position = UDim2.new(1, -150, 0, 15) -- Adjusted position
-    SpectateButton.Size = UDim2.new(0, 70, 0, 25)
-    SpectateButton.Font = Enum.Font.GothamSemibold
-    SpectateButton.Text = "Spectate"
-    SpectateButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    SpectateButton.TextSize = 12
-    SpectateButton.TextXAlignment = Enum.TextXAlignment.Center
-
-    -- Friend Request Button
-    local FriendButton = Instance.new("TextButton")
-    FriendButton.Name = "FriendButton"
-    FriendButton.Parent = PlayerCard
-    FriendButton.BackgroundColor3 = Color3.fromRGB(80, 150, 80)
-    FriendButton.BorderSizePixel = 0
-    FriendButton.Position = UDim2.new(1, -150, 0, 50) -- Adjusted position
-    FriendButton.Size = UDim2.new(0, 70, 0, 25)
-    FriendButton.Font = Enum.Font.GothamSemibold
-    FriendButton.Text = "Friend"
-    FriendButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    FriendButton.TextSize = 12
-    FriendButton.TextXAlignment = Enum.TextXAlignment.Center
-    -- Teleport Button
-    local TeleportButton = Instance.new("TextButton")
-    TeleportButton.Name = "Teleport Button"
-    TeleportButton.Parent = PlayerCard
-    TeleportButton.BackgroundColor3 = Color3.fromRGB(150, 80, 80)
-    TeleportButton.BorderSizePixel = 0
-    TeleportButton.Position = UDim2.new(1, -150, 0, 85) -- Adjusted position
-    TeleportButton.Size = UDim2.new(0, 70, 0, 25)
-    TeleportButton.Font = Enum.Font.GothamSemibold
-    TeleportButton.Text = "Teleport"
-    TeleportButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    TeleportButton.TextSize = 12
-    TeleportButton.TextXAlignment = Enum.TextXAlignment.Center
-
-    -- Button Click Handlers
-    SpectateButton.MouseButton1Click:Connect(function()
-        if CurrentlySpectating then
-            SwitchToOriginalPlayer()
-            CurrentlySpectating = false
-            CreateNotification("Stopped spectating!", 2) -- Notification for stopping spectating
-            return -- Exit the function if already spectating
-        end
-        local targetCharacter = player.Character
-        if targetCharacter and targetCharacter:FindFirstChild("HumanoidRootPart") then
-            Camera.CameraSubject = targetCharacter:FindFirstChild("Humanoid") or targetCharacter:FindFirstChild("HumanoidRootPart")
-            CurrentlySpectating = true -- set flag to indicate spectating state
-            CreateNotification("Spectating " .. player.Name, 2)
+        hasPremium = player.M            CreateNotification("Spectating " .. player.Name, 2)
         else
             CreateNotification("Character not loaded for " .. player.Name, 2)
         end
@@ -758,8 +670,48 @@ local function UpdateLocalUserInfoCanvasSize()
     end
     LocalUserInfo.CanvasSize = UDim2.new(0, 0, 0, totalHeight)
 end
+-- Tab Switching Function
+local function SwitchTab(tabName)
+    -- Reset all tabs
+    ServerTab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    ServerTab.TextColor3 = Color3.fromRGB(200, 200, 200)
+    ServerTab.Indicator.Visible = false
+    PlayersTab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    PlayersTab.TextColor3 = Color3.fromRGB(200, 200, 200)
+    PlayersTab.Indicator.Visible = false
+    LocalTab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    LocalTab.TextColor3 = Color3.fromRGB(200, 200, 200)
+    LocalTab.Indicator.Visible = false
 
--- Event Handling
+    ServerInfo.Visible = false
+    PlayersInfo.Visible = false
+    LocalUserInfo.Visible = false
+    SearchBarFrame.Visible = false
+
+    -- Activate the selected tab
+    if tabName == "Server" then
+        ServerTab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+        ServerTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+        ServerTab.Indicator.Visible = true
+        ServerInfo.Visible = true
+        UpdateServerInfoCanvasSize()
+    elseif tabName == "Players" then
+        PlayersTab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+        PlayersTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+        PlayersTab.Indicator.Visible = true
+        PlayersInfo.Visible = true
+        SearchBarFrame.Visible = true
+        UpdatePlayerList()
+    elseif tabName == "Local User" then
+        LocalTab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+        LocalTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+        LocalTab.Indicator.Visible = true
+        LocalUserInfo.Visible = true
+        UpdateLocalUserInfoCanvasSize()
+    end
+end
+
+-- Event Handling (Updated for tab switching)
 CloseButton.MouseButton1Click:Connect(function()
     ServerInfoGUI:Destroy()
 end)
@@ -769,76 +721,34 @@ MinimizeButton.MouseButton1Click:Connect(ToggleMinimize)
 MinimizedCircle.MouseButton1Click:Connect(ToggleMinimize)
 
 ServerTab.MouseButton1Click:Connect(function()
-    ServerTab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    ServerTab.TextColor3 = Color3.fromRGB(255, 255, 255)
-    ServerTab.Indicator.Visible = true
-    PlayersTab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    PlayersTab.TextColor3 = Color3.fromRGB(200, 200, 200)
-    PlayersTab.Indicator.Visible = false
-    LocalTab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    LocalTab.TextColor3 = Color3.fromRGB(200, 200, 200)
-    LocalTab.Indicator.Visible = false
-
-    ServerInfo.Visible = true
-    PlayersInfo.Visible = false
-    LocalUserInfo.Visible = false
-    SearchBarFrame.Visible = false
-    UpdateServerInfoCanvasSize()
+    SwitchTab("Server")
 end)
 
 PlayersTab.MouseButton1Click:Connect(function()
-    PlayersTab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    PlayersTab.TextColor3 = Color3.fromRGB(255, 255, 255)
-    PlayersTab.Indicator.Visible = true
-    ServerTab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    ServerTab.TextColor3 = Color3.fromRGB(200, 200, 200)
-    ServerTab.Indicator.Visible = false
-    LocalTab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    LocalTab.TextColor3 = Color3.fromRGB(200, 200, 200)
-    LocalTab.Indicator.Visible = false
-
-    ServerInfo.Visible = false
-    PlayersInfo.Visible = true
-    LocalUserInfo.Visible = false
-    SearchBarFrame.Visible = true
-    UpdatePlayerList() -- Refresh player list when the tab is opened
+    SwitchTab("Players")
 end)
 
 LocalTab.MouseButton1Click:Connect(function()
-    LocalTab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    LocalTab.TextColor3 = Color3.fromRGB(255, 255, 255)
-    LocalTab.Indicator.Visible = true
-    ServerTab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    ServerTab.TextColor3 = Color3.fromRGB(200, 200, 200)
-    ServerTab.Indicator.Visible = false
-    PlayersTab.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-    PlayersTab.TextColor3 = Color3.fromRGB(200, 200, 200)
-    PlayersTab.Indicator.Visible = false
-
-    ServerInfo.Visible = false
-    PlayersInfo.Visible = false
-    LocalUserInfo.Visible = true
-    SearchBarFrame.Visible = false
-    UpdateLocalUserInfoCanvasSize()
+    SwitchTab("Local User")
 end)
 
--- Update player list whenever a player joins or leaves
+-- Update player list whenever a player joins or leaves (unchanged)
 Players.PlayerAdded:Connect(UpdatePlayerList)
 Players.PlayerRemoving:Connect(UpdatePlayerList)
 
--- Update the player list when the display name changes.
+-- Update the player list when the display name changes. (unchanged)
 Players.PlayerChanged:Connect(function(player, property)
     if property == "DisplayName" then
         UpdatePlayerList()
     end
 end)
 
--- Connect the SearchBar input to the filter function
+-- Connect the SearchBar input to the filter function (unchanged)
 SearchBar:GetPropertyChangedSignal("Text"):Connect(function()
     FilterPlayers(SearchBar.Text)
 end)
 
--- Continuously update server info
+-- Continuously update server info (unchanged)
 RunService.Heartbeat:Connect(function()
     -- Update the player count
     local playerCountString = #Players:GetPlayers() .. " / " .. Players.MaxPlayers
